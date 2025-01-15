@@ -1,11 +1,14 @@
 package me.jungdaun.springbootdeveloper.service;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import me.jungdaun.springbootdeveloper.domain.Article;
 import me.jungdaun.springbootdeveloper.dto.AddArticleRequest;
+import me.jungdaun.springbootdeveloper.dto.UpdateArticleRequest;
 import me.jungdaun.springbootdeveloper.repository.BlogRepository;
 import org.springframework.stereotype.Service;
 
+import java.beans.Transient;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -25,5 +28,19 @@ public class BlogService {
     public Article findById(long id){
         return blogRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("not fount:" + id));
+    }
+
+    public void delete(long id){
+        blogRepository.deleteById(id);
+    }
+
+    @Transactional
+    public Article update(long id, UpdateArticleRequest request){
+        Article article = blogRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("not found: " + id));
+
+        article.update(request.getTitle(), request.getContent());
+
+        return article;
     }
 }
