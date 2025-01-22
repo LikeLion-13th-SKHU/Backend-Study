@@ -1,10 +1,10 @@
 package com.study.seun.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.study.seun.domain.Article;
-import com.study.seun.dto.AddArticleRequest;
-import com.study.seun.dto.UpdateArticleRequest;
-import com.study.seun.repository.BlogRepository;
+import com.study.seun.blog.domain.Article;
+import com.study.seun.blog.dto.req.AddArticleRequest;
+import com.study.seun.blog.dto.req.UpdateArticleRequest;
+import com.study.seun.blog.repository.BlogRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
