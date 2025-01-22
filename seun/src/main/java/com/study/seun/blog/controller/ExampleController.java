@@ -1,4 +1,4 @@
-package com.study.seun.controller;
+package com.study.seun.blog.controller;
 
 import lombok.Getter;
 import lombok.Setter;

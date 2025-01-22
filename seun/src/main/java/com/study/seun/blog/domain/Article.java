@@ -1,4 +1,4 @@
-package com.study.seun.domain;
+package com.study.seun.blog.domain;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
