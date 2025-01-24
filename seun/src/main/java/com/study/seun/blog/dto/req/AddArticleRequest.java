@@ -1,6 +1,6 @@
-package com.study.seun.dto;
+package com.study.seun.blog.dto.req;
 
-import com.study.seun.domain.Article;
+import com.study.seun.blog.domain.Article;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,15 +1,14 @@
-package com.study.seun.controller;
+package com.study.seun.blog.controller;
 
-import com.study.seun.domain.Article;
-import com.study.seun.dto.ArticleListViewResponse;
-import com.study.seun.dto.ArticleViewResponse;
-import com.study.seun.service.BlogService;
+import com.study.seun.blog.domain.Article;
+import com.study.seun.blog.dto.res.ArticleListViewResponse;
+import com.study.seun.blog.dto.res.ArticleViewResponse;
+import com.study.seun.blog.service.BlogService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
