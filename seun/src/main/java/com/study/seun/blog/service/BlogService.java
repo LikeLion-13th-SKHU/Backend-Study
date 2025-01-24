@@ -1,9 +1,9 @@
-package com.study.seun.service;
+package com.study.seun.blog.service;
 
-import com.study.seun.domain.Article;
-import com.study.seun.dto.AddArticleRequest;
-import com.study.seun.dto.UpdateArticleRequest;
-import com.study.seun.repository.BlogRepository;
+import com.study.seun.blog.domain.Article;
+import com.study.seun.blog.dto.req.UpdateArticleRequest;
+import com.study.seun.blog.dto.req.AddArticleRequest;
+import com.study.seun.blog.repository.BlogRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

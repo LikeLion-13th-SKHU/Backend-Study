@@ -1,10 +1,10 @@
-package com.study.seun.controller;
+package com.study.seun.blog.controller;
 
-import com.study.seun.domain.Article;
-import com.study.seun.dto.AddArticleRequest;
-import com.study.seun.dto.ArticleResponse;
-import com.study.seun.dto.UpdateArticleRequest;
-import com.study.seun.service.BlogService;
+import com.study.seun.blog.domain.Article;
+import com.study.seun.blog.dto.req.UpdateArticleRequest;
+import com.study.seun.blog.dto.res.ArticleResponse;
+import com.study.seun.blog.dto.req.AddArticleRequest;
+import com.study.seun.blog.service.BlogService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
