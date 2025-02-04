@@ -16,3 +16,7 @@ spring:
       hibernate:
         format_sql: false
         use_sql_comments: true
+
+jwt:
+  issuer: ${jwt.issuer}
+  secret_key: ${jwt.secret_key}
