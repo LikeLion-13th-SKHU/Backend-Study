@@ -1,0 +1,52 @@
+spring:
+  profiles:
+    active: prod
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+            scope:
+              - email
+              - profile
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    defer-datasource-initialization: true
+  h2:
+    console:
+      enabled: true
+jwt:
+  issuer: ajufresh@gmail.com
+  secret_key: ${JWT_SECRET_KEY}
+
+
+
+#spring:
+#  jpa:
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+#    defer-datasource-initialization: true
+#  datasource:
+#    url: jdbc:h2:mem:testdb
+#    driver-class-name: org.h2.Driver
+#    username: sa
+#    password:
+#  h2:
+#    console:
+#      enabled: true
+#  sql:
+#    init:
+#      mode: always
+#  jwt:
+#    issuer: ajufresh@gmail.com
+#    secret_key: study-springboot
+
+
+
