@@ -9,6 +9,12 @@
     <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
+  <component name="DBNavigator.Project.DatabaseBrowserManager">
+    <autoscroll-to-editor value="false" />
+    <autoscroll-from-editor value="true" />
+    <show-object-properties value="true" />
+    <loaded-nodes />
+  </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="7ca037bd-352c-4565-bd9c-1aa54277b98e">
       <console name="Connection" type="STANDARD" schema="" session="Main"><![CDATA[create database blog;
@@ -58,6 +64,9 @@ show tables;]]></console>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="7ca037bd-352c-4565-bd9c-1aa54277b98e" />
     <connection id="275eb948-3ebb-433c-81c5-f042d6aefa78" />
+  </component>
+  <component name="DBNavigator.Project.ExecutionManager">
+    <retain-sticky-names value="false" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
