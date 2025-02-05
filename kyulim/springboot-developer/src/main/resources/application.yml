@@ -1,14 +1,27 @@
 spring:
+  config:
+    import: application-oauth.yml
+    
   jpa:
     show-sql: true
     properties:
       hibernate:
         format_sql: true
     defer-datasource-initialization: true
-  datasource:
-    url: jdbc:h2:mem:testdb
+#  datasource:
+#    url: jdbc:h2:mem:testdb
     username: sa
 
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${security.oauth2.client.registration.google.client-id}
+            client-secret: ${security.oauth2.client.registration.google.client-secret}
+            scope:
+              - email
+              - profile
   h2:
     console:
       enabled: true
