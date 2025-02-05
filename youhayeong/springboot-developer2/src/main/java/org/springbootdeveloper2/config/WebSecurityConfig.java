@@ -1,3 +1,4 @@
+/*
 package org.springbootdeveloper2.config;
 
 import lombok.RequiredArgsConstructor;
@@ -70,3 +71,4 @@ public class WebSecurityConfig {
     }
 
 }
+*/
