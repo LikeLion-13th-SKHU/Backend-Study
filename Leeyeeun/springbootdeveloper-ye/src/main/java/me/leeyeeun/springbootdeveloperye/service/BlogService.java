@@ -6,6 +6,7 @@ import me.leeyeeun.springbootdeveloperye.domain.Article;
 import me.leeyeeun.springbootdeveloperye.dto.request.AddArticleRequest;
 import me.leeyeeun.springbootdeveloperye.dto.request.UpdateArticleRequest;
 import me.leeyeeun.springbootdeveloperye.repository.BlogRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,8 +19,8 @@ public class BlogService {
     private final BlogRepository blogRepository;
 
     // 블로그 글 추가
-    public Article save(AddArticleRequest addArticleRequest) {
-        return blogRepository.save(addArticleRequest.toEntity());
+    public Article save(AddArticleRequest addArticleRequest, String userName) {
+        return blogRepository.save(addArticleRequest.toEntity(userName));
     }
 
     // 블로그 글 목록 조회
@@ -36,6 +37,11 @@ public class BlogService {
     // 블로그 글 한 개 삭제
     public void delete(Long id) {
         blogRepository.deleteById(id);
+        Article article = blogRepository.findById(id)
+                .orElseThrow( () -> new IllegalArgumentException("not found : " + id));
+
+        authorizeArticleAuthor(article);
+        blogRepository.delete(article);
     }
 
     // 블로그 글 수정
@@ -47,5 +53,12 @@ public class BlogService {
         article.update(updateArticleRequest.getTitle(), updateArticleRequest.getContent());
 
         return article;
+    }
+
+    private static void authorizeArticleAuthor(Article article) {
+        String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+        if (!article.getAuthor().equals(userName)) {
+            throw new IllegalArgumentException("not authorized");
+        }
     }
 }

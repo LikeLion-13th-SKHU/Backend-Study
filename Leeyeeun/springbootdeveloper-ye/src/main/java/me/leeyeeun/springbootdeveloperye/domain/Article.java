@@ -35,15 +35,26 @@ public class Article {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @Builder // 빌더 패턴으로 객체 생성
-    public Article(String title, String content) {
-        this.title = title;
-        this.content = content;
-    }
+//    @Builder // 빌더 패턴으로 객체 생성
+//    public Article(String title, String content) {
+//        this.title = title;
+//        this.content = content;
+//    }
 
     // 블로그 글 수정 메소드
     public void update(String title, String content) {
         this.title = title;
         this.content = content;
     }
+
+    @Column(name = "author", nullable = false)
+    private String author;
+
+    @Builder
+    public Article(String author, String title, String content) {
+        this.author = author;
+        this.title = title;
+        this.content = content;
+    }
+
 }
