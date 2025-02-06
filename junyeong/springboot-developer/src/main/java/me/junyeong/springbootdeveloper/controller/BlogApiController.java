@@ -1,9 +1,11 @@
 package me.junyeong.springbootdeveloper.controller;
 
+import java.security.Principal;
 import lombok.RequiredArgsConstructor;
 import me.junyeong.springbootdeveloper.domain.Article;
 import me.junyeong.springbootdeveloper.dto.AddArticleRequest;
 import me.junyeong.springbootdeveloper.dto.ArticleResponse;
+import me.junyeong.springbootdeveloper.dto.UpdateArticleRequest;
 import me.junyeong.springbootdeveloper.service.BlogService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +20,8 @@ public class BlogApiController {
     private final BlogService blogService;
 
     @PostMapping("/api/articles")
-    public ResponseEntity<Article> addArticle(@RequestBody AddArticleRequest request){
-         Article savedArticle = blogService.save(request);
+    public ResponseEntity<Article> addArticle(@RequestBody AddArticleRequest request, Principal principal){
+         Article savedArticle = blogService.save(request, principal.getName());
 
          return ResponseEntity.status(HttpStatus.CREATED).body(savedArticle);
     }
@@ -50,7 +52,7 @@ public class BlogApiController {
     }
 
     @PutMapping("/api/articles/{id}")
-    public ResponseEntity<Article> updateArticle(@PathVariable long id, @RequestBody AddArticleRequest request){
+    public ResponseEntity<Article> updateArticle(@PathVariable long id, @RequestBody UpdateArticleRequest request){
         Article updatedArticle = blogService.update(id, request);
 
         return ResponseEntity.ok()
