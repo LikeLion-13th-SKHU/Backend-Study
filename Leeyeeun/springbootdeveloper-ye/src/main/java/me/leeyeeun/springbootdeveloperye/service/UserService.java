@@ -1,29 +1,25 @@
-package org.springbootdeveloper2.service;
+package me.leeyeeun.springbootdeveloperye.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springbootdeveloper2.domain.User;
-import org.springbootdeveloper2.dto.request.AddUserRequest;
-import org.springbootdeveloper2.repository.UserRepository;
+import me.leeyeeun.springbootdeveloperye.domain.User;
+import me.leeyeeun.springbootdeveloperye.dto.request.AddUserRequest;
+import me.leeyeeun.springbootdeveloperye.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-@Service
 @RequiredArgsConstructor
+@Service
 public class UserService {
-
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
-
-    // 회원 정보 추가
-    public Long save(AddUserRequest addUserRequest) {
+    public Long save(AddUserRequest dto) {
         return userRepository.save(User.builder()
-                .email(addUserRequest.getEmail())
+                .email(dto.getEmail())
                 // 패스워드 암호화
-                .password(bCryptPasswordEncoder.encode(addUserRequest.getPassword()))
+                .password(bCryptPasswordEncoder.encode(dto.getPassword()))
                 .build()).getId();
     }
 
-    // 전달 받은 유저 id로 유저 검색해서 전달
     public User findById(Long userId) {
         return userRepository.findById(userId).orElseThrow(
                 () -> new IllegalArgumentException("Unexpected user"));
