@@ -24,6 +24,7 @@ public class UserService {
                 .build()).getId();
     }
 
+
     // 전달 받은 유저 id로 유저 검색해서 전달
     public User findById(Long userId) {
         return userRepository.findById(userId).orElseThrow(
@@ -34,4 +35,5 @@ public class UserService {
         return userRepository.findByEmail(email)
                 .orElseThrow( () -> new IllegalArgumentException("Unexpected user"));
     }
+
 }
