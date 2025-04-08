@@ -1,6 +1,7 @@
 package org.springbootdeveloper2.config.jwt;
 
 import io.jsonwebtoken.Jwts;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springbootdeveloper2.domain.User;
@@ -114,5 +115,11 @@ class TokenProviderTest {
 
         // then
         assertThat(userIdByToken).isEqualTo(userId);
+    }
+
+    // 데이터 중복 삽입 방지 테스트 끝나면 데이터 삭제
+    @AfterEach
+    public void cleanUp() {
+        userRepository.deleteAll();
     }
 }

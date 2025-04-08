@@ -1,11 +1,7 @@
 spring:
   profiles:
     active: prod
-  datasource:
-    url: ${spring.datasource.url}
-    username: ${spring.datasource.username}
-    password: ${spring.datasource.password}
-    driver-class-name: com.mysql.cj.jdbc.Driver
+
   jpa:
     database: mysql
     database-platform: org.hibernate.dialect.MySQL8Dialect
@@ -15,8 +11,23 @@ spring:
     properties:
       hibernate:
         format_sql: false
+
         use_sql_comments: true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${spring.oauth2.client.registration.goole.client-id}
+            client-secret: ${spring.oauth2.client.registration.goole.client-secret}
+            scope:
+              - email
+              - profile
 
 jwt:
   issuer: ${jwt.issuer}
   secret_key: ${jwt.secret_key}
+
+        use_sql_comments: true
+
