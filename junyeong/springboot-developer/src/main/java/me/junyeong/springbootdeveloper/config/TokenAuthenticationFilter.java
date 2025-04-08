@@ -33,9 +33,10 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
     }
 
     private String getAccessToken(String authorizationHeader) {
-        if (authorizationHeader != null || !authorizationHeader.startsWith(TOKEN_PREFIX)) {
-            return authorizationHeader.substring(TOKEN_PREFIX.length());
+        if (authorizationHeader == null || !authorizationHeader.startsWith(TOKEN_PREFIX)) {
+            return null; // Authorization 헤더가 없거나 잘못된 경우 null 반환
         }
-        return null;
+        return authorizationHeader.substring(TOKEN_PREFIX.length()); // "Bearer " 이후의 토큰 반환
     }
+
 }
